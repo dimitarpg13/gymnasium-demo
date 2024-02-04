@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "gymnasium-demo"
+version = "0.1.0"
+description = ""
+authors = ["Dimitar Gueorguiev <dimitar_pg13@hotmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+gymnasium = {extras = ["classic-control"], version = "^0.29.1"}
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

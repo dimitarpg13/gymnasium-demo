@@ -1,2 +1,2 @@
-# gymnasium-demo
-RL gymnasium demo code and experiments
+# Gymnasium demo code 
+Basic environments using the Gymnasium RL environment
