@@ -14,6 +14,6 @@ Related paper: [Neuronlike adaptive elements that can solve difficult learning c
 
 ### Idea from for an algorithm
 
-We should have two components in our algorithm - 
+We shall have two main components in our algorithm - 
 
 
