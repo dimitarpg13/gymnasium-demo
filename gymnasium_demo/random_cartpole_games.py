@@ -3,7 +3,7 @@ import gymnasium as gym
 env = gym.make("CartPole-v1")
 
 
-def random_games():
+def random_cartpole_games():
     # Each of this episode is its own game.
     for episode in range(10):
         env.reset()
@@ -29,4 +29,4 @@ def random_games():
                 break
 
 
-random_games()
+random_cartpole_games()
