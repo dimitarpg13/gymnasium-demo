@@ -1,2 +1,2 @@
 # Gymnasium demo code 
-Basic environments using the OpenAI Gymnasium RL framework
+Experimenting with basic environments using the OpenAI Gymnasium RL framework
