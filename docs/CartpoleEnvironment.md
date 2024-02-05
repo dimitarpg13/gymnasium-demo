@@ -1,4 +1,4 @@
-# The CartPole Environment
+# The CartPole Environment and establishing control of the cartpole in it
 
 Details on the environment: https://gymnasium.farama.org/environments/classic_control/cart_pole/
 
