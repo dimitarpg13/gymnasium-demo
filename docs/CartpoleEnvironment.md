@@ -8,3 +8,8 @@ Related paper: [Neuronlike adaptive elements that can solve difficult learning c
 
 python code: [random_cartpole_games.py](https://github.com/dimitarpg13/gymnasium-demo/blob/main/gymnasium_demo/random_cartpole_games.py)
 
+
+## Devising an algorithm to control the cartpole in the Cartpole environment
+
+
+
