@@ -306,7 +306,12 @@ class HeUniform(VarianceScaling):
         }
 
 
-
+@keras_export(
+    [
+        "keras.initializers.VarianceScaling",
+        "keras.initializers.variance_scaling",
+    ]
+)
 class VarianceScaling(Initializer):
     """Initializer that adapts its scale to the shape of its input tensors.
 
@@ -419,14 +424,6 @@ class VarianceScaling(Initializer):
             "distribution": self.distribution,
             "seed": seed_config,
         }
-
-
-@keras_export(
-    [
-        "keras.initializers.GlorotUniform",
-        "keras.initializers.glorot_uniform",
-    ]
-)
 ```
 
 Excerpt from `keras/src/initializers/initializer.py`
