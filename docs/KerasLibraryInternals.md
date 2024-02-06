@@ -3,7 +3,6 @@
 ## Contents
 [The Layers in Keras](#the-layers-in-keras)
 
-
 [Initializers in Keras](#initializers-in-keras)
 
 
