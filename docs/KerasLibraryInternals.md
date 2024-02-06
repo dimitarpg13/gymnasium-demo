@@ -2169,3 +2169,4 @@ class HeUniform(VarianceScaling):
             "seed": serialization_lib.serialize_keras_object(self._init_seed)
         }
 ```
+[Go back to the beginning of the Section](#initializers-in-keras)
