@@ -1,6 +1,6 @@
 # Keras Library Internals
 
-Excerpt from `keras/src/layers/core/dense.py`
+Excerpt from `keras/src/layers/core/dense.py`:
 ```python
 @keras_export("keras.layers.Dense")
 class Dense(Layer):
