@@ -1,8 +1,8 @@
 # Keras Library Internals
 
 ## Contents
-### [The Layers in Keras](#the-layers-in-keras)
-### [Initializers in Keras](#initializers-in-keras)
+[The Layers in Keras](#the-layers-in-keras)
+[Initializers in Keras](#initializers-in-keras)
 
 
 ## <a id="the-layers-in-keras"></a>The Layers in Keras 
