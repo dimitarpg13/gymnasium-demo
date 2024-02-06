@@ -1,5 +1,9 @@
 # Keras Library Internals
 
+## Contents
+### [The Layers in Keras](#the-layers-in-keras)
+### [Initializers in Keras](#initializers-in-keras)
+
 
 ## <a id="the-layers-in-keras"></a>The Layers in Keras 
 
@@ -1541,7 +1545,7 @@ class Dense(Layer):
 ```
 
 
-## [Initializers in Keras](#initializers-in-keras)
+## <a id="initializers-in-keras"></a>[Initializers in Keras]
 
 Excerpt from `keras/src/initializers/initializer.py`
 ```python
