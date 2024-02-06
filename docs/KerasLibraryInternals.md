@@ -1,7 +1,7 @@
 # Keras Library Internals
 
 
-## The Layers in Keras  
+## [The Layers in Keras](#the-layers-in-keras)  
 
 
 Excerpt from `keras/src/layers/layer.py`:
