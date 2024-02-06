@@ -1,6 +1,6 @@
 # Keras Library Internals
 
-
+Excerpt from `keras/src/layers/core/dense.py`
 ```python
 @keras_export("keras.layers.Dense")
 class Dense(Layer):
@@ -212,5 +212,97 @@ class Dense(Layer):
             config["lora_rank"] = self.lora_rank
         return {**base_config, **config}
 
+
+```
+
+
+Excerpt from `keras/src/initializers/random_initializers.py`:
+```python
+@keras_export(["keras.initializers.HeNormal", "keras.initializers.he_normal"])
+class HeNormal(VarianceScaling):
+    """He normal initializer.
+
+    It draws samples from a truncated normal distribution centered on 0 with
+    `stddev = sqrt(2 / fan_in)` where `fan_in` is the number of input units in
+    the weight tensor.
+
+    Examples:
+
+    >>> # Standalone usage:
+    >>> initializer = HeNormal()
+    >>> values = initializer(shape=(2, 2))
+
+    >>> # Usage in a Keras layer:
+    >>> initializer = HeNormal()
+    >>> layer = Dense(3, kernel_initializer=initializer)
+
+    Args:
+        seed: A Python integer or instance of
+            `keras.backend.SeedGenerator`.
+            Used to make the behavior of the initializer
+            deterministic. Note that an initializer seeded with an integer
+            or `None` (unseeded) will produce the same random values
+            across multiple calls. To get different random values
+            across multiple calls, use as seed an instance
+            of `keras.backend.SeedGenerator`.
+
+    Reference:
+
+    - [He et al., 2015](https://arxiv.org/abs/1502.01852)
+    """
+
+    def __init__(self, seed=None):
+        super().__init__(
+            scale=2.0, mode="fan_in", distribution="truncated_normal", seed=seed
+        )
+
+    def get_config(self):
+        return {
+            "seed": serialization_lib.serialize_keras_object(self._init_seed)
+        }
+
+
+@keras_export(["keras.initializers.HeUniform", "keras.initializers.he_uniform"])
+class HeUniform(VarianceScaling):
+    """He uniform variance scaling initializer.
+
+    Draws samples from a uniform distribution within `[-limit, limit]`, where
+    `limit = sqrt(6 / fan_in)` (`fan_in` is the number of input units in the
+    weight tensor).
+
+    Examples:
+
+    >>> # Standalone usage:
+    >>> initializer = HeUniform()
+    >>> values = initializer(shape=(2, 2))
+
+    >>> # Usage in a Keras layer:
+    >>> initializer = HeUniform()
+    >>> layer = Dense(3, kernel_initializer=initializer)
+
+    Args:
+        seed: A Python integer or instance of
+            `keras.backend.SeedGenerator`.
+            Used to make the behavior of the initializer
+            deterministic. Note that an initializer seeded with an integer
+            or `None` (unseeded) will produce the same random values
+            across multiple calls. To get different random values
+            across multiple calls, use as seed an instance
+            of `keras.backend.SeedGenerator`.
+
+    Reference:
+
+    - [He et al., 2015](https://arxiv.org/abs/1502.01852)
+    """
+
+    def __init__(self, seed=None):
+        super().__init__(
+            scale=2.0, mode="fan_in", distribution="uniform", seed=seed
+        )
+
+    def get_config(self):
+        return {
+            "seed": serialization_lib.serialize_keras_object(self._init_seed)
+        }
 
 ```
