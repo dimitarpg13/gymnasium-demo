@@ -1546,7 +1546,7 @@ class Dense(Layer):
 ```
 
 
-## <a id="initializers-in-keras"></a>[Initializers in Keras]
+## <a id="initializers-in-keras"></a>Initializers in Keras
 
 Excerpt from `keras/src/initializers/initializer.py`
 ```python
