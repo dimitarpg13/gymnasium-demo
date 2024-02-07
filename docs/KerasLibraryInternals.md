@@ -420,6 +420,8 @@ def _build_map_helper(
 
 ## <a id="keras-operation"></a>Keras Operation
 
+[Go back to Contents](#contents)
+
 Excerpt from `keras/src/ops/operation.py`:
 ```python
 @keras_export("keras.Operation")
@@ -683,6 +685,7 @@ class Operation:
 
 ## <a id="the-layers-in-keras"></a>The Layers in Keras 
 
+[Go back to Contents](#contents)
 
 Excerpt from `keras/src/layers/layer.py`:
 ```python
