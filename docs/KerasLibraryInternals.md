@@ -1,6 +1,10 @@
 # Keras Library Internals
 
 ## <a id="contents"></a>Contents
+[The Node class](#the-node-class)
+
+[Keras Operation](#keras-operation)
+
 [The Layers in Keras](#the-layers-in-keras)
 
 [Initializers in Keras](#initializers-in-keras)
