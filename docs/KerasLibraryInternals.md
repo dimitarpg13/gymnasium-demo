@@ -9,6 +9,8 @@
 
 [Keras Operation](#keras-operation)
 
+[Tracking in Keras](#tracking-in-keras)
+
 [The Layers in Keras](#the-layers-in-keras)
 
 [Initializers in Keras](#initializers-in-keras)
