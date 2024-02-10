@@ -39,8 +39,8 @@ Barto and Sutton then discuss the partitioning of the original problem into a se
 
 $x: \pm 0.8, \pm 2.4 m$\
 $\theta: 0, \pm 1, \pm 6, \pm 12\degree$\
-$\dot{x}: $\
-$\dot{\theta}: $.
+$\dot{x}: \pm 0.5, \pm \infty m/s$\
+$\dot{\theta}: \pm 50, \pm \infty \degree/s$.
 
 ### Using and Implementing Deep Q Network
 
