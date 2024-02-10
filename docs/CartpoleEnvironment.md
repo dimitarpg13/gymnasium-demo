@@ -15,8 +15,9 @@ The parameters of the problem are the pole length and mass, cart mass, coefficie
 We assume that the equations of motion of the cart-pole system are not known and there is no pre-existing controller which can be immitated. 
 At each time step, the controller receives a vector giving the cart-pole system's state $s \in \mathcal{S}$ at that instant. 
 
-![Cart-pole example](images/cartpole_example_Sutton_barto.png =250x)
-<img src="images/cartpole_example_Sutton_barto.png" width="200">
+<img src="images/cartpole_example_Sutton_barto.png" width="300">
+
+
 ## Random cartpole games
 
 python code: [random_cartpole_games.py](https://github.com/dimitarpg13/gymnasium-demo/blob/main/gymnasium_demo/random_cartpole_games.py)
