@@ -17,7 +17,10 @@ python code: [random_cartpole_games.py](https://github.com/dimitarpg13/gymnasium
 
 ### Idea from for an algorithm
 
-We shall have two main components in our algorithm - 
+We shall have two main components in our algorithm -
+
+
+### Using and Implementing Deep Q Network
 
 $$loss = \left( r + \gamma \max_{a' \in \mathcal{A}} Q'\left(s,a'\right) - Q\left(s,a\right)\right)^{2}$$
 
