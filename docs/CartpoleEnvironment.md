@@ -42,6 +42,8 @@ $\theta: 0, \pm 1, \pm 6, \pm 12\ \degree$\
 $\dot{x}: \pm 0.5, \pm \infty\ m/s$\
 $\dot{\theta}: \pm 50, \pm \infty\ \degree/s$.
 
+This yields $3 \times 3 \times 6 \times 3 = 162$ regions corresponding to all of the combinations of the intervals. 
+
 ### Using and Implementing Deep Q Network
 
 We use $Q$ function to define a target for the current state $s$.
