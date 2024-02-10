@@ -15,9 +15,10 @@ python code: [random_cartpole_games.py](https://github.com/dimitarpg13/gymnasium
 ## Devising an algorithm to control the cartpole in the Cartpole environment
 
 
-### Idea from for an algorithm
+### Ideas for an algorithm 
 
-We shall have two main components in our algorithm -
+#### The algorithm in the article by Barto and Sutton
+The article delineates the presence of two _adaptive_ elements as essential piece of their algorithm: associative search element (ASE) and adaptive critic element (ACE). 
 
 
 ### Using and Implementing Deep Q Network
