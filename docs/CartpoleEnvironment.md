@@ -37,10 +37,10 @@ Figure 2: Reinforcement learning loop
 
 Barto and Sutton then discuss the partitioning of the original problem into a set of independent subproblems which they denote as the _"box system"_. They use identical _generate-and-test_ rule to solve each subproblem. They divide the four dimensional cart-pole state space into disjoint regions (aka _boxes_) by quantizing the four state variables. Barto and Sutton introduce up to six quantization thresholds for each state variable:
 
-$x: \pm 0.8, \pm 2.4\: m$\
+$x: \pm 0.8, \pm 2.4\ m$\
 $\theta: 0, \pm 1, \pm 6, \pm 12\degree$\
-$\dot{x}: \pm 0.5, \pm \infty\: m/s$\
-$\dot{\theta}: \pm 50, \pm \infty\: \degree/s$.
+$\dot{x}: \pm 0.5, \pm \infty\ m/s$\
+$\dot{\theta}: \pm 50, \pm \infty\ \degree/s$.
 
 ### Using and Implementing Deep Q Network
 
