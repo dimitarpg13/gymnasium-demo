@@ -2,7 +2,7 @@
 
 Details on the environment: https://gymnasium.farama.org/environments/classic_control/cart_pole/
 
-**Description**: 
+**Problem Description**: 
 This environment corresponds to the version of the cartpole problem described in [Neuronlike adaptive elements that can solve difficult learning control problems, Andrew Barto, Richard Sutton, CW. Anderson, 1983](https://github.com/dimitarpg13/gymnasium-demo/blob/main/docs/Neuronlike_adaptive_elements_that_can_solve_difficult_learning_control_problems_Barto1983.pdf).
 A pole is attached by an un-actuated joint to a cart, which moves along a frictionless track. The pole mechanically acts as a pendulum. The pendulum is placed upright on the cart and the goal is to balance it by applying forces in the left and right direction on the cart. The cart is free to move within the bounds of one-dimensional track. The pole is free to move only in the vertical plane of the cart and track. The controller can apply an impulsive left or right force $F$ of fixed magnitude to the cart at discrete time intervals. The cart-pole model has 4 state variables:
 
@@ -12,7 +12,8 @@ $\dot{x}$ - cart velocity.\
 $\dot{\theta}$ - rate of change of the angle.
 
 The parameters of the problem are the pole length and mass, cart mass, coefficients of friction between the cart and the track, and at the hinge between the pole and the track, the impulsive control force magnitude, the force due to gravity, and the simulation step size. 
-
+We assume that the equations of motion of the cart-pole system are not known and there is no pre-existing controller which can be immitated. 
+At each time step, the controller receives a vector giving the cart-pole system's state $s \in \mathcal{S}$ at that instant. 
 
 ## Random cartpole games
 
