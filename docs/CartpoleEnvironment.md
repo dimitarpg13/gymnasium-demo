@@ -11,7 +11,7 @@ $\theta$ - angle of the pole with the vertical.\
 $\dot{x}$ - cart velocity.\
 $\dot{\theta}$ - rate of change of the angle.
 
-
+The parameters of the problem are the pole length and mass, cart mass, coefficients of friction between the cart and the track, and at the hinge between the pole and the track, the impulsive control force magnitude, the force due to gravity, and the simulation step size. 
 
 
 ## Random cartpole games
