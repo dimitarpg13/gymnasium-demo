@@ -19,6 +19,5 @@ python code: [random_cartpole_games.py](https://github.com/dimitarpg13/gymnasium
 
 We shall have two main components in our algorithm - 
 
-When $a \ne 0$, there are two solutions to $(ax^2 + bx + c = 0)$ and they are 
-$$x = {-b \pm \sqrt{b^2-4ac} \over 2a}$$
+$$loss = \left( r + \gamma \max_{s \in \mathcal{S}} Q'\left(s,a'\right) - Q\left(s,a\right)\right)^{2}
 
