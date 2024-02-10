@@ -18,7 +18,6 @@ At each time step, the controller receives a vector giving the cart-pole system'
 <img src="images/cartpole_example_Sutton_barto.png" width="300">\
 Figure 1: Cart-pole example
 
-
 ## Random cartpole games
 
 python code: [random_cartpole_games.py](https://github.com/dimitarpg13/gymnasium-demo/blob/main/gymnasium_demo/random_cartpole_games.py)
@@ -35,6 +34,8 @@ The reinforcement learning process generates actions as responses to a random pr
 
 <img src="images/reinforcement_learning_loop_Sutton_barto.png" width="600">\
 Figure 2: Reinforcement learning loop
+
+Barto and Sutton then discuss the partitioning of the original problem into a set of independent subproblems which they denote as the _"box system"_. They use identical _generate-and-test_ rule to solve each subproblem.
 
 ### Using and Implementing Deep Q Network
 
