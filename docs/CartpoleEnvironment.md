@@ -22,6 +22,6 @@ We shall have two main components in our algorithm -
 
 ### Using and Implementing Deep Q Network
 
-We use $$Q$$ function to define a target for the current state $$s$$.
-$$loss = \left( r + \gamma \max_{a' \in \mathcal{A}} Q'\left(s,a'\right) - Q\left(s,a\right)\right)^{2}$$
+We use $Q$ function to define a target for the current state $s$.
+$loss = \left( r + \gamma \max_{a' \in \mathcal{A}} Q'\left(s,a'\right) - Q\left(s,a\right)\right)^{2}$
 
