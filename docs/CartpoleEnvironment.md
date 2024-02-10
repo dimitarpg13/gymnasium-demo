@@ -7,11 +7,8 @@ This environment corresponds to the version of the cartpole problem described in
 A pole is attached by an un-actuated joint to a cart, which moves along a frictionless track. The pole mechanically acts as a pendulum. The pendulum is placed upright on the cart and the goal is to balance it by applying forces in the left and right direction on the cart. The cart is free to move within the bounds of one-dimensional track. The pole is free to move only in the vertical plane of the cart and track. The controller can apply an impulsive left or right force $F$ of fixed magnitude to the cart at discrete time intervals. The cart-pole model has 4 state variables:
 
 $x$ - position of the cart on the track.
-
 $\theta$ - angle of the pole with the vertical.
-
 $\dot{x}$ - cart velocity
-
 $\dot{\theta}$ - rate of change of the angle.
 
 
