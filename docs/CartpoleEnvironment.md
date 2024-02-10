@@ -18,10 +18,11 @@ python code: [random_cartpole_games.py](https://github.com/dimitarpg13/gymnasium
 ### Ideas for an algorithm 
 
 #### The algorithm in the article by Barto and Sutton
-The article delineates the presence of two _adaptive_ elements as essential piece of their algorithm: associative search element (ASE) and adaptive critic element (ACE). 
+
+The article delineates the presence of two _adaptive_ elements as essential piece of their algorithm: associative search element (_ASE_) and adaptive critic element (_ACE_). The presence of _ACE_ improves the performance of the algorithm. 
 
 
-### Using and Implementing Deep Q Network
+#### Using and Implementing Deep Q Network
 
 We use $Q$ function to define a target for the current state $s$.
 
