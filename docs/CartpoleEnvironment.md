@@ -33,7 +33,8 @@ The article delineates the presence of two _adaptive_ elements as essential piec
 
 The reinforcement learning process generates actions as responses to a random process that is biased by the combination of its weighted values and input patterns. To supply a signed error signal the environment must know what the actual action was and what it should have been (aka _target_).
 
-<img src="images/reinforcement_learning_loop_Sutton_barto.png" width="600">
+<img src="images/reinforcement_learning_loop_Sutton_barto.png" width="600">\
+Figure 2: Reinforcement learning loop
 
 ### Using and Implementing Deep Q Network
 
