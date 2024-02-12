@@ -61,13 +61,17 @@ Notice that since the effect of a demon's decision will depend on the decisions 
 
 Barto and Sutton chose neuron-like implementation for the _ASE_ element in their algorithm.
 
-The local demon corresponds to the mechanism of a single neuron synapse and the output pathway of the postsynaptic element (the _ASE_) provides the common pathway for control signals. To accomplish the global demon's job of activating Barto and Sutton introduced a decoder that has four real-valued input pathways (for the system state vector) and 162 binary valued pathways corresponding to the boxes in the original "Demon-in-a-box" algorithm. Te decoder effectively selects the synapose corresponding to the appropriate box through the 162-componenets binary vector output.
+The local demon corresponds to the mechanism of a single neuron synapse and the output pathway of the postsynaptic element (the _ASE_) provides the common pathway for control signals. To accomplish the global demon's job of activating Barto and Sutton introduced a decoder that has four real-valued input pathways (for the system state vector) and $162$ binary valued pathways corresponding to the boxes in the original "Demon-in-a-box" algorithm. Te decoder effectively selects the synapose corresponding to the appropriate box through the $162$-components binary vector output.
  
 _ASE_'s input is determined from the current cart-pole state vector by decoder that produces output vector consisting of zeros with single one indicating which one of the 162 boxes contains the state vector. _ASE_'s output determines force applied to cart. Reinforcement is constant throughout trial and becomes $-1$ to signal failure.
 
 The other job of the global demon is to distribute a failure signal to all of the local demons - this is implemented via the reinforcement pathway of the _ASE_ element which receives the failure signal and distributes the information to all of its relevant synapses.
 
-In more detail, the _ASE_ is defined as follows. The element has a reinforcement input pathway, $n$ pathways for nonreinforcement input, and a single output pathway (see Figure 3 below). Let $x_{i}\left(t\right), 1 \leq i \leq n$, denote the real-valued signal on the $i$th non-reinforcement input pathway at time $t$, and let $y\left(t\right)$ denote the output at time $t$. 
+In more detail, the _ASE_ is defined as follows. The element has a reinforcement input pathway, $n$ pathways for nonreinforcement input, and a single output pathway (see Figure 3 below). Let $x_{i}\left(t\right), 1 \leq i \leq n$, denote the real-valued signal on the $i$th non-reinforcement input pathway at time $t$, and let $y\left(t\right)$ denote the output at time $t$. Associated with each nonreinforcement input pathway $i$ is a real-valued weight with value at time $t$ denoted by $w_{i}\left(t\right)$.
+
+The element's output $y\left(t\right)$ is determined from the input vector $X\left(t\right) = \left(x_{1}\left(t\right),...,x_{n}\left(t\right)\right)$ as follows:
+
+
 
 <img src="images/ASE_element.png" width="900">\
 Figure 3: The _ASE_ controller for the cart-pole system. 
