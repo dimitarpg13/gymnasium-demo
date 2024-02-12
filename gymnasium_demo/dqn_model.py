@@ -21,3 +21,9 @@ def dqn_model(input_shape, action_space):
 
     model = Model(inputs=x_input, outputs=x, name="Cartpole DQN model")
 
+    model.compile(loss='mse', optimizer=RMSprop(lr=0.00025, rho=0.95, epsilon=0.01), metrics=["accuracy"])
+
+    model.summary()
+
+    return model
+
