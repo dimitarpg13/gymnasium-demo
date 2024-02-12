@@ -61,7 +61,7 @@ Notice that since the effect of a demon's decision will depend on the decisions 
 
 Barto and Sutton chose neuron-like implementation for the _ASE_ element in their algorithm.
 
-<img src="images/ASE_element.png" width="800">\
+<img src="images/ASE_element.png" width="600">\
 Figure 3: The _ASE_ controller for the cart-pole system. _ASE_'s input is determined from the current cart-pole state vector by decoder that produces output vector consisting of zeros with single one indicating which one of the 162 boxes contains the state vector. _ASE_'s output determines force applied to cart. Reinforcement is constant throughout trial and becomes $-1$ to signal failure.
 
 ### Using and Implementing Deep Q Network
