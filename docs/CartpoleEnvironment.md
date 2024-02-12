@@ -71,7 +71,7 @@ In more detail, the _ASE_ is defined as follows. The element has a reinforcement
 
 The element's output $y\left(t\right)$ is determined from the input vector $X\left(t\right) = \left(x_{1}\left(t\right),...,x_{n}\left(t\right)\right)$ as follows:
 
-$$y\left(t\right) = f\left[\sum_{i=1}^{n} w_{i}\left(t\right)x_{i}\left(t\right) + noise\left(t\right) \right] \ \(1)$$
+$$y\left(t\right) = f\left[\sum_{i=1}^{n} w_{i}\left(t\right)x_{i}\left(t\right) + noise\left(t\right) \right]\;(1)$$
 
 <img src="images/ASE_element.png" width="900">\
 Figure 3: The _ASE_ controller for the cart-pole system. 
