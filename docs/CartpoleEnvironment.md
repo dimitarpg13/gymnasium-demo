@@ -77,9 +77,8 @@ Here $noise\left(t\right)$ is a real random variable with probability density fu
 
   $$f\left(x\right) =
     \begin{cases}
-      1 & \text{if $x \geq 0$ (control action right)}\\
-      2 & \text{if $x < 0$ (control action left)}\\
-      0 & \text{otherwise}
+      -1 & \text{if $x \geq 0$ (control action right)}\\
+      1 & \text{if $x < 0$ (control action left)}
     \end{cases}$$  
 
 <img src="images/ASE_element.png" width="900">\
