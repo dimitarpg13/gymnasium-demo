@@ -44,10 +44,17 @@ $\dot{\theta}: \pm 50, \pm \infty\ \degree/s$.
 
 This yields $3 \times 3 \times 6 \times 3 = 162$ regions corresponding to all of the combinations of the intervals. 
 
-#### The original Demon-in-a-Box Algorithm before Barto and Sutton's work
+#### The original "Demon-in-a-Box" Algorithm for balancing the cartpole before Barto and Sutton
 Each box is imagined to contain a _local demon_ whose job is to choose control action (_left_ or _right_) whenever the system state enters its box. The local demon must learn to choose the action that will tend to be correlated with long system lifeline, that is, a long time until the occurence of the failure signal. 
 
-A _global demon_ inspects the incoming state vector at each time step and alerts the local demon whose box contains that system state. When a failure signal is received, the global demon distributes it to all local demons. Each local demon maintains estimates of the expected lifetimes of the system following a _left_ decision and following a _right_ decision. A local demon's estimate of the expected lifetime for _left_ is a weighted average of actual system lifetimes over past occasions that the system state entered the demon's box and the decision _left_ was made. The expected lifetime for the decision _right_ is determined in the same way for occasions in which a _right_ decision was made. 
+A _global demon_ inspects the incoming state vector at each time step and alerts the local demon whose box contains that system state. When a failure signal is received, the global demon distributes it to all local demons. Each local demon maintains estimates of the expected lifetimes of the system following a _left_ decision and following a _right_ decision. A local demon's estimate of the expected lifetime for _left_ is a weighted average of actual system lifetimes over past occasions that the system state entered the demon's box and the decision _left_ was made. The expected lifetime for the decision _right_ is determined in the same way for occasions in which a _right_ decision was made. More specifically, upon being signaled by the global demon that the system state has entered its box, a local demon does the following:
+
+1) it chooses the control action _left_ or _right_ according to which has the longest lifetime estimate. The control system emits the control action as soon as the decision was made
+2) it remembers which action was just taken and begins to count time steps
+3) when a failure signal is received, it uses its current count to update the _left_ or _right_ lifetime estimate, depending on which action it chose when its box was entered.
+
+Notice that since the effect of a demon's decision will depend on the decisions made by other demons whose boxes are visited during a trial (a trial is the time period from reset to failure), the environment of a local demon, consisting of the other demons as well as the cart-pole system, does not consistently evaluate the demon's actions.
+
 
 ### Using and Implementing Deep Q Network
 
