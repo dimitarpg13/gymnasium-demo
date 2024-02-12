@@ -61,6 +61,9 @@ Notice that since the effect of a demon's decision will depend on the decisions 
 
 Barto and Sutton chose neuron-like implementation for the _ASE_ element in their algorithm.
 
+<img src="images/ASE_element.png" width="600">\
+Figure 3: The _ASE_ element
+
 ### Using and Implementing Deep Q Network
 
 We use $Q$ function to define a target for the current state $s$.
