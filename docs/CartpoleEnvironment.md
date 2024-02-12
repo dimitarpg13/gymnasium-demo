@@ -57,7 +57,9 @@ Notice that since the effect of a demon's decision will depend on the decisions 
 
 #### Barto and Sutton's contributions to the "Demon-in-a-box" algorithm
 
+1. The _ASE_ element
 
+Barto and Sutton chose neuron-like implementation for the _ASE_ element in their algorithm.
 
 ### Using and Implementing Deep Q Network
 
