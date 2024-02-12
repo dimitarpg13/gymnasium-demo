@@ -84,7 +84,7 @@ Here $noise\left(t\right)$ is a real random variable with probability density fu
 <img src="images/ASE_element.png" width="900">\
 Figure 3: The _ASE_ controller for the cart-pole system. 
 
-
+According to $\left(1\right)$, actions are emitted even in the absence of nonzero input signals. The element's output is determined by chance, with a probability biased by the weighted sum of the input signals. 
 
 ### Using and Implementing Deep Q Network
 
