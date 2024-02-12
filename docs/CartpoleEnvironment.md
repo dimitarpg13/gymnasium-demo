@@ -73,6 +73,10 @@ The element's output $y\left(t\right)$ is determined from the input vector $X\le
 
 $$y\left(t\right) = f\left[\sum_{i=1}^{n} w_{i}\left(t\right)x_{i}\left(t\right) + noise\left(t\right) \right]\quad (1)$$
 
+Here $noise\left(t\right)$ is a real random variable with probability density function $d$ and $f$ is either a threshold, sigmoid, or identity function. or the cart-pole example, $d$ is the mean zero Gaussian distribution with variance ${\sigma}^2$, and $f$ is the following threshold function:
+
+
+
 <img src="images/ASE_element.png" width="900">\
 Figure 3: The _ASE_ controller for the cart-pole system. 
 
