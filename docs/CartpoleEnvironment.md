@@ -75,11 +75,10 @@ $$y\left(t\right) = f\left[\sum_{i=1}^{n} w_{i}\left(t\right)x_{i}\left(t\right)
 
 Here $noise\left(t\right)$ is a real random variable with probability density function $d$ and $f$ is either a threshold, sigmoid, or identity function. or the cart-pole example, $d$ is the mean zero Gaussian distribution with variance ${\sigma}^2$, and $f$ is the following threshold function:
 
-  $$D_{it} =
+  $$f\left(x\right) =
     \begin{cases}
-      1 & \text{if bank $i$ issues ABs at time $t$}\\
-      2 & \text{if bank $i$ issues CBs at time $t$}\\
-      0 & \text{otherwise}
+      +1, & \text{if $x \geq 0$ (control action _right_)}\\
+      -1, & \text{if $x < 0$ (control action _left).}\\
     \end{cases}$$  
 
 <img src="images/ASE_element.png" width="900">\
