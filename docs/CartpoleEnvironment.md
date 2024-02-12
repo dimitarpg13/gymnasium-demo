@@ -44,6 +44,8 @@ $\dot{\theta}: \pm 50, \pm \infty\ \degree/s$.
 
 This yields $3 \times 3 \times 6 \times 3 = 162$ regions corresponding to all of the combinations of the intervals. 
 
+Each box is imagined to contain a _local demon_ 
+
 ### Using and Implementing Deep Q Network
 
 We use $Q$ function to define a target for the current state $s$.
