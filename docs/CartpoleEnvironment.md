@@ -67,7 +67,7 @@ _ASE_'s input is determined from the current cart-pole state vector by decoder t
 
 The other job of the global demon is to distribute a failure signal to all of the local demons - this is implemented via the reinforcement pathway of the _ASE_ element which receives the failure signal and distributes the information to all of its relevant synapses.
 
-In more detail, the _ASE_ is defined as follows. The element has a reinforcement input pathway, $n$ pathways for nonreinforcement input, and a single output pathway (see Figure 3 below). Let $x_{i}\left(t\right), 1 \geq i \leq n$
+In more detail, the _ASE_ is defined as follows. The element has a reinforcement input pathway, $n$ pathways for nonreinforcement input, and a single output pathway (see Figure 3 below). Let $x_{i}\left(t\right), 1 \leq i \leq n$, denote the real-valued signal on the $i$th non-reinforcement input pathway at time $t$, and let $y\left(t\right)$ denote the output at time $t$. 
 
 <img src="images/ASE_element.png" width="900">\
 Figure 3: The _ASE_ controller for the cart-pole system. 
