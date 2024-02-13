@@ -84,7 +84,11 @@ Here $noise\left(t\right)$ is a real random variable with probability density fu
 <img src="images/ASE_element.png" width="900">\
 Figure 3: The _ASE_ controller for the cart-pole system. 
 
-According to $\left(1\right)$, actions are emitted even in the absence of nonzero input signals. The element's output is determined by chance, with a probability biased by the weighted sum of the input signals. 
+According to $\left(1\right)$, actions are emitted even in the absence of nonzero input signals. The element's output is determined by chance, with a probability biased by the weighted sum of the input signals. If that sum is zero, the left and right control actions are equally probable. Assuming the decoder input shown on Figure 3, a positive weight $w_i$, for example, would make the decision right more probable than left when box $i$ is entered by the system state vector. The value of a weight, therefore, plays a role corresponding to the difference between the expected lifetimes for the left and right actions stored by a local demon in the boxes system. However, unlike the original deterministic "demon-in-a-box" algorithm, the Barto and Sutton's model is stochastic and the weight only determines the probability of an action rather than the action itself.
+The learning process updates the action probabilities. The learning process updates the action probabilities. Also note that an input vector need not be of te restricted form produced by the decoder in order for $(1)$ and the equations that follow to be meaningful.
+The weights $w_i, 1 \leq i \leq n$, change over discrete time as follows:
+
+$$w_{i}\left(t+1\right) = w_{i}\left(i\right) + {\alpha}r\left(t\right)e_{i}\left(t\right)    \quad (2)$$
 
 ### Using and Implementing Deep Q Network
 
