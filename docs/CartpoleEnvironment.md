@@ -88,7 +88,7 @@ According to $\left(1\right)$, actions are emitted even in the absence of nonzer
 The learning process updates the action probabilities. The learning process updates the action probabilities. Also note that an input vector need not be of te restricted form produced by the decoder in order for $(1)$ and the equations that follow to be meaningful.
 The weights $w_i, 1 \leq i \leq n$, change over discrete time as follows:
 
-$$w_{i}\left(t+1\right) = w_{i}\left(i\right) + {\alpha}r\left(t\right)e_{i}\left(t\right)    \quad (2)$$
+$$w_{i}\left(t+1\right) = w_{i}\left(i\right) + {\alpha}r\left(t\right){\times}e_{i}\left(t\right)    \quad (2)$$
 
 where :
 
