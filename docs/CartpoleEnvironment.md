@@ -103,5 +103,5 @@ $e_i\left(t\right)$ is _eligibility_ at time $t$ of the input pathway $i$.
 
 We use $Q$ function to define a target for the current state $s$.
 
-$loss = \left( r + \gamma \max_{a' \in \mathcal{A}} Q'\left(s,a'\right) - Q\left(s,a\right)\right)^{2}$
+$$loss = \left( r + \gamma \max_{a' \in \mathcal{A}} Q'\left(s,a'\right) - Q\left(s,a\right)\right)^{2}$$
 
