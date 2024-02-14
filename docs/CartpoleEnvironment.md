@@ -98,6 +98,11 @@ $r\left(t\right)$ is a real-valued _reinforcement_ at time $t$, and
 
 $e_i\left(t\right)$ is _eligibility_ at time $t$ of the input pathway $i$.
 
+The basic didea expressed by $(2)$ is that whenever certain conditions (to be discussed later) hold for the input pathway $i$, then the pathway becomes eligible to have its weight modified, and it remains eligible for some period of time after the conditions cease to hold. How $w_{i}$ changes depends on the reinforcement received during periods of eligibility. If the reinforcement indicates improved performance, then the weights of the eligible pathways are changed so as to make the element more likely to do whatever it did that made those pathways eligible. If reinforcement indicates decreased performance, then the weights of the eligible pathways are changed to make the element more likely to do something else.
+
+_Reinforcement_: Positive $r$ indicates the occurrence of a rewarding event and a negative $r$ indicates the occurrence of a penalizing event. It can be regarded as a measure of the change in the value of a performance cirterion as commonly used in control theory. For the cartpole problem, $r$ remains zero throughout a trial and becomes $-1$ when failure occurs.
+
+_Eligibility_: 
 
 ### Using and Implementing Deep Q Network
 
