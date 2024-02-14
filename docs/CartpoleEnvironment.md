@@ -104,6 +104,9 @@ _Reinforcement_: Positive $r$ indicates the occurrence of a rewarding event and 
 
 _Eligibility_: a pathway shall reach maximum eligibility a short time after the occurence of a pairing of a nonzero input signal on that pathway with the "firing" of the element. Eligibility should decay thereafter toward zero. Thus, when the consequences of the element's firing are fed back to the element, credit or blame can be assigned to the weights that will alter the firing probability when a similar input pattern occurs in the future. More generally, the eligibility of a pathway reflects the extent to which input activity on that pathway was paired in the past with element output activity. The eligibility of pathway $i$ at time $t$ is therefore a _trace_ of the product $y\left(\tau\right){\times}{x_{i}}\left(\tau\right)$ for times $\tau$ preceding $t$. If either or both of the quantities $y\left(\tau\right)$ and $x_{i}\left(\tau\right)$ are negative credit is assigned via (2) assuming the eligibility is a trace of the signed product $y\left(\tau\right){\times}{x_{i}}\left(\tau\right)$.
 
+For computational simplicity, we generate exponentially decaying eligibility traces $e_{i}$ using the following linear difference equation:
+
+$$e_{i}\left(t+1\right) = {\delta}{e_i}\left(t\right) + \left(1-{\delta}\right)y\left(t\right){x_i}\left(t\right)$$
 
 ### Using and Implementing Deep Q Network
 
