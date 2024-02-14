@@ -106,7 +106,7 @@ _Eligibility_: a pathway shall reach maximum eligibility a short time after the 
 
 For computational simplicity, we generate exponentially decaying eligibility traces $e_{i}$ using the following linear difference equation:
 
-$$e_{i}\left(t+1\right) = {\delta}{e_i}\left(t\right) + \left(1-{\delta}\right)y\left(t\right){x_i}\left(t\right)$$
+$$e_{i}\left(t+1\right) = {\delta}{e_i}\left(t\right) + \left(1-{\delta}\right)y\left(t\right){x_i}\left(t\right)    \quad (3)$$
 
 ### Using and Implementing Deep Q Network
 
