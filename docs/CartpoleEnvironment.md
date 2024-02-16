@@ -108,6 +108,9 @@ For computational simplicity, we generate exponentially decaying eligibility tra
 
 $$e_{i}\left(t+1\right) = {\delta}{e_i}\left(t\right) + \left(1-{\delta}\right)y\left(t\right){x_i}\left(t\right)    \quad (3)$$
 
+where $\delta, 0 \leq \delta 1$, determines the trace decay rate. Note that each synapse has its own local eligibility trace. 
+   Eligibility plays a role analogous to the part of the boxes local-demon algorithm, when the demon's box is entered and an action has been chosen, remembers what action was chosen and begins to count. The factor $x_i\left(t\right)$ in $\left(3\right)$ triggers the eligibility trace, a kind of count, or contributes to an ongoing race, whenever box $i$ is entered ($x_i\left(t\right)=1$).
+
 ### Using and Implementing Deep Q Network
 
 We use $Q$ function to define a target for the current state $s$.
