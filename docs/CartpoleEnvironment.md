@@ -109,8 +109,11 @@ For computational simplicity, we generate exponentially decaying eligibility tra
 $$e_{i}\left(t+1\right) = {\delta}{e_i}\left(t\right) + \left(1-{\delta}\right)y\left(t\right){x_i}\left(t\right)    \quad (3)$$
 
 where $\delta, 0 \leq \delta 1$, determines the trace decay rate. Note that each synapse has its own local eligibility trace. 
-   Eligibility plays a role analogous to the part of the boxes local-demon algorithm, when the demon's box is entered and an action has been chosen, remembers what action was chosen and begins to count. The factor $x_i\left(t\right)$ in $\left(3\right)$ triggers the eligibility trace, a kind of count, or contributes to an ongoing race, whenever box $i$ is entered ($x_i\left(t\right)=1$).
-
+   Eligibility plays a role analogous to the part of the boxes local-demon algorithm, when the demon's box is entered and an action has been chosen, remembers what action was chosen and begins to count. The factor $x_i\left(t\right)$ in $\left(3\right)$ triggers the eligibility trace, a kind of count, or contributes to an ongoing trace, whenever box $i$ is entered ($x_i\left(t\right)=1$).
+   Unlike the count initiated by a local demon in the "demon-in-a-box" algorithm, the eligibility trace effectively counts down rather than up (more precisely, its magnitude decays toward zero). Recall that reinforcement $r$ remains zero until a failure occurs, at which time it becomes $-1$. Thus whatever control decision was made when a box was visited will always be made _less_ likely when the failure occurs, but the longer the time interval between the decision and the ocurrence of the failure signal, the less this decrease in probability will be. Since the failure signal always eentually occurs, the action that was taken may deserve some of the blame for the failure. Despite the fact that all actions inevitable lead to failure, one action is _probably_ better than the rest. The learning process defined by $\left(1\right)$-$\left(3\right)$ needs to be more subtle to ensure convergence to the actions that yeld the least punishment in cases in which only punishment is avaialable. This subtelty is implemented via _ACE_ rather than in _ASE_ as it will be clarified in the section on _ACE_.
+   Among its other functions, the _ACE_ constructs predictions of reinforcement so that if punishment is less than its expected level, it acts as a reward. 
+   
+   
 ### Using and Implementing Deep Q Network
 
 We use $Q$ function to define a target for the current state $s$.
