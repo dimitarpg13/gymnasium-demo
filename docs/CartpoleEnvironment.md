@@ -26,7 +26,7 @@ python code: [random_cartpole_games.py](https://github.com/dimitarpg13/gymnasium
 ## Devising an algorithm to control the cartpole in the Cartpole environment
 
 
-### The algorithms in the article by Barto and Sutton
+### The algorithms in the 1983 Barto and Sutton's article
 
 The article delineates the presence of two _adaptive_ elements as essential piece of their algorithm: associative search element (_ASE_) and adaptive critic element (_ACE_). The presence of _ACE_ creates a reinforcement learning feedback loop which improves the performance of the algorithm. The _ASE_ must discover what responses lead to improvements in performance. The _ASE_ employs _trial-and-error_, or _generate-and-test_ search process. In the presence of input signals it generates actions by a random process. Based on feedback that evaluates the problem-solving consequences of the actions, the _ASE_ "tunes in" input signals to bias the action-generation process, conditionally on the input, so that it will more likely generate the actions leading to improved performance. The optimal action depends on the value of the input signal which is the state $s$. Actions that lead to performance improvement in the presence of specific input signals are stored in an _association map_ which is a special data structure. This stochastic search process is denoted as _associative search_ by Barto and Sutton.
 
@@ -55,15 +55,80 @@ A _global demon_ inspects the incoming state vector at each time step and alerts
 
 Notice that since the effect of a demon's decision will depend on the decisions made by other demons whose boxes are visited during a trial (a trial is the time period from reset to failure), the environment of a local demon, consisting of the other demons as well as the cart-pole system, does not consistently evaluate the demon's actions.
 
-#### Barto and Sutton's contributions to the "Demon-in-a-box" algorithm
+#### Barto and Sutton's "two-control elements" algorithm
 
-1. The _ASE_ element
+1. The Adaptive Search ELement (_ASE_)
 
 Barto and Sutton chose neuron-like implementation for the _ASE_ element in their algorithm.
 
+The local demon corresponds to the mechanism of a single neuron synapse and the output pathway of the postsynaptic element (the _ASE_) provides the common pathway for control signals. To accomplish the global demon's job of activating Barto and Sutton introduced a decoder that has four real-valued input pathways (for the system state vector) and $162$ binary valued pathways corresponding to the boxes in the original "Demon-in-a-box" algorithm. Te decoder effectively selects the synapose corresponding to the appropriate box through the $162$-components binary vector output.
+ 
+_ASE_'s input is determined from the current cart-pole state vector by decoder that produces output vector consisting of zeros with single one indicating which one of the 162 boxes contains the state vector. _ASE_'s output determines force applied to cart. Reinforcement is constant throughout trial and becomes $-1$ to signal failure.
+
+The other job of the global demon is to distribute a failure signal to all of the local demons - this is implemented via the reinforcement pathway of the _ASE_ element which receives the failure signal and distributes the information to all of its relevant synapses.
+
+In more detail, the _ASE_ is defined as follows. The element has a reinforcement input pathway, $n$ pathways for nonreinforcement input, and a single output pathway (see Figure 3 below). Let $x_{i}\left(t\right), 1 \leq i \leq n$, denote the real-valued signal on the $i$th non-reinforcement input pathway at time $t$, and let $y\left(t\right)$ denote the output at time $t$. Associated with each nonreinforcement input pathway $i$ is a real-valued weight with value at time $t$ denoted by $w_{i}\left(t\right)$.
+
+The element's output $y\left(t\right)$ is determined from the input vector $X\left(t\right) = \left(x_{1}\left(t\right),...,x_{n}\left(t\right)\right)$ as follows:
+
+$$y\left(t\right) = f\left[\sum_{i=1}^{n} w_{i}\left(t\right)x_{i}\left(t\right) + noise\left(t\right) \right]\quad (1)$$
+
+Here $noise\left(t\right)$ is a real random variable with probability density function $d$ and $f$ is either a threshold, sigmoid, or identity function. or the cart-pole example, $d$ is the mean zero Gaussian distribution with variance ${\sigma}^2$, and $f$ is the following threshold function:
+
+  $$f\left(x\right) =
+    \begin{cases}
+      -1 & \text{if $x \geq 0$ (control action right)}\\
+      +1 & \text{if $x < 0$ (control action left)}
+    \end{cases}$$  
+
+<img src="images/ASE_element.png" width="900">\
+Figure 3: The _ASE_ controller for the cart-pole system. 
+
+According to $\left(1\right)$, actions are emitted even in the absence of nonzero input signals. The element's output is determined by chance, with a probability biased by the weighted sum of the input signals. If that sum is zero, the left and right control actions are equally probable. Assuming the decoder input shown on Figure 3, a positive weight $w_i$, for example, would make the decision right more probable than left when box $i$ is entered by the system state vector. The value of a weight, therefore, plays a role corresponding to the difference between the expected lifetimes for the left and right actions stored by a local demon in the boxes system. However, unlike the original deterministic "demon-in-a-box" algorithm, the Barto and Sutton's model is stochastic and the weight only determines the probability of an action rather than the action itself.
+The learning process updates the action probabilities. The learning process updates the action probabilities. Also note that an input vector need not be of te restricted form produced by the decoder in order for $(1)$ and the equations that follow to be meaningful.
+The weights $w_i, 1 \leq i \leq n$, change over discrete time as follows:
+
+$$w_{i}\left(t+1\right) = w_{i}\left(i\right) + {\alpha}r\left(t\right){\times}e_{i}\left(t\right)    \quad (2)$$
+
+where :
+
+$\alpha$ is a positive constant determining the rate of change of $w_i$,
+
+$r\left(t\right)$ is a real-valued _reinforcement_ at time $t$, and
+
+$e_i\left(t\right)$ is _eligibility_ at time $t$ of the input pathway $i$.
+
+The basic didea expressed by $(2)$ is that whenever certain conditions (to be discussed later) hold for the input pathway $i$, then the pathway becomes eligible to have its weight modified, and it remains eligible for some period of time after the conditions cease to hold. How $w_{i}$ changes depends on the reinforcement received during periods of eligibility. If the reinforcement indicates improved performance, then the weights of the eligible pathways are changed so as to make the element more likely to do whatever it did that made those pathways eligible. If reinforcement indicates decreased performance, then the weights of the eligible pathways are changed to make the element more likely to do something else.
+
+_Reinforcement_: Positive $r$ indicates the occurrence of a rewarding event and a negative $r$ indicates the occurrence of a penalizing event. It can be regarded as a measure of the change in the value of a performance cirterion as commonly used in control theory. For the cartpole problem, $r$ remains zero throughout a trial and becomes $-1$ when failure occurs.
+
+_Eligibility_: a pathway shall reach maximum eligibility a short time after the occurence of a pairing of a nonzero input signal on that pathway with the "firing" of the element. Eligibility should decay thereafter toward zero. Thus, when the consequences of the element's firing are fed back to the element, credit or blame can be assigned to the weights that will alter the firing probability when a similar input pattern occurs in the future. More generally, the eligibility of a pathway reflects the extent to which input activity on that pathway was paired in the past with element output activity. The eligibility of pathway $i$ at time $t$ is therefore a _trace_ of the product $y\left(\tau\right){\times}{x_{i}}\left(\tau\right)$ for times $\tau$ preceding $t$. If either or both of the quantities $y\left(\tau\right)$ and $x_{i}\left(\tau\right)$ are negative credit is assigned via (2) assuming the eligibility is a trace of the signed product $y\left(\tau\right){\times}{x_{i}}\left(\tau\right)$.
+
+For computational simplicity, we generate exponentially decaying eligibility traces $e_{i}$ using the following linear difference equation:
+
+$$e_{i}\left(t+1\right) = {\delta}{e_i}\left(t\right) + \left(1-{\delta}\right)y\left(t\right){x_i}\left(t\right)    \quad (3)$$
+
+where $\delta, 0 \leq \delta 1$, determines the trace decay rate. Note that each synapse has its own local eligibility trace. 
+   Eligibility plays a role analogous to the part of the boxes local-demon algorithm, when the demon's box is entered and an action has been chosen, remembers what action was chosen and begins to count. The factor $x_i\left(t\right)$ in $\left(3\right)$ triggers the eligibility trace, a kind of count, or contributes to an ongoing trace, whenever box $i$ is entered ($x_i\left(t\right)=1$).
+   Unlike the count initiated by a local demon in the "demon-in-a-box" algorithm, the eligibility trace effectively counts down rather than up (more precisely, its magnitude decays toward zero). Recall that reinforcement $r$ remains zero until a failure occurs, at which time it becomes $-1$. Thus whatever control decision was made when a box was visited will always be made _less_ likely when the failure occurs, but the longer the time interval between the decision and the ocurrence of the failure signal, the less this decrease in probability will be. Since the failure signal always eentually occurs, the action that was taken may deserve some of the blame for the failure. Despite the fact that all actions inevitable lead to failure, one action is _probably_ better than the rest. The learning process defined by $\left(1\right)$-$\left(3\right)$ needs to be more subtle to ensure convergence to the actions that yeld the least punishment in cases in which only punishment is avaialable. This subtelty is implemented via _ACE_ rather than in _ASE_ as it will be clarified in the section on _ACE_.
+   Among its other functions, the _ACE_ constructs predictions of reinforcement so that if punishment is less than its expected level, it acts as a reward. As implied earlier _ASE_ operates in conjunction witht the _ACE_. 
+
+2. The Adaptive Critic Element (_ACE_)
+
+<img src="images/ASE_and_ACE_elements.png" width="900">\
+Figure 4: The _ASE_ controller and the _ACE_ element for the cart-pole system. 
+
+_//TODO: finish this section_
+
+#### Advantages of the "Two-control elements" over the "Demon-in-a-box" algorithm
+  
+   Although the boxes system and the cartpole problem serves the purpose of explaining the ASE design in understandable way, the _ASE_ does not represent an attempt to duplicate the "demon-in-a-box" algorithm in neuronlike form. The _ASE_ formulation is less restricted than the "demon-in-a-box" algorithm in several ways. First, the "demon-in-a-box" algorithm is based on the subdivision of the problem space into a finire number of nonoverlapping regions, and no generalization is attempted between regions. It develops a control rule that is effectively specified by means of a lookup table. Although a form of generalization can be applied to the "Demon-in-a-box" algorithm by using an averaging process over neighboring boxes it is not immediately obvious how to extend the algorithm to take advantage of the other forms of generalization that would be possible if the controlled system's states could be represented by arbitrary vectors rather than only by the standard unit basis vectors which are produced by a suitable decoder. The _ASE_ can accept arbitrary input vectors and can be regarded as a step toward extending the type of generalization produced by error-corection supervised learning pattern classification methods to the less restricted reinforcement learning paradigm.
+   The "Demon-in-box" algorithm is also restricted in that its design was based on the _a priori_ knowledge that the time until failure was to serve as he evaluation criterion and that the learning process would be divided into distinct trials that would always end with a failure signal. This _a priori_ knowledge was used to reduce the uncertainty in the problem by restricting each local demon to choosing the same action each time its box was entered during any given trial. The _ASE_, on other hand, is capable of working to achieve rewarding events and to avoid penalizing events which might occur at any time. It is not exclusively failure-driven, and its operation is specified without reference to the notion of a trial (_TODO_: _need to elaborate on the latter_).    
+   
+   
 ### Using and Implementing Deep Q Network
 
 We use $Q$ function to define a target for the current state $s$.
 
-$loss = \left( r + \gamma \max_{a' \in \mathcal{A}} Q'\left(s,a'\right) - Q\left(s,a\right)\right)^{2}$
+$$loss = \left( r + \gamma \max_{a' \in \mathcal{A}} Q'\left(s,a'\right) - Q\left(s,a\right)\right)^{2}$$
 
