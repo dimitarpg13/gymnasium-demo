@@ -115,7 +115,7 @@ where $\delta, 0 \leq \delta 1$, determines the trace decay rate. Note that each
 
 2. The Adaptive Critic Element (_ACE_)
 
-The Fig. 4 shows an _ASE_ coupled with an _ACE_ for the cartpole task. 
+The Fig. 4 shows an _ASE_ coupled with an _ACE_ for the cartpole task. The _ACE_ receives the externally supplied reinforcement signal which it uses to determine how to compute, on th ebasis of the current cartpole state vector, an improved reinforcement signal (denoted with $\hat{r}$ on the Figure) that it sends to the _ASE_.
 
 <img src="images/ASE_and_ACE_elements.png" width="900">\
 Figure 4: The _ASE_ controller and the _ACE_ element for the cart-pole system. 
