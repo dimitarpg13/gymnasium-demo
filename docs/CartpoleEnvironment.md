@@ -55,7 +55,7 @@ A _global demon_ inspects the incoming state vector at each time step and alerts
 
 Notice that since the effect of a demon's decision will depend on the decisions made by other demons whose boxes are visited during a trial (a trial is the time period from reset to failure), the environment of a local demon, consisting of the other demons as well as the cart-pole system, does not consistently evaluate the demon's actions.
 
-#### Barto and Sutton's "two-control elements" algorithm
+#### Barto and Sutton's "two control elements" algorithm
 
 1. The Adaptive Search ELement (_ASE_)
 
@@ -111,18 +111,18 @@ $$e_{i}\left(t+1\right) = {\delta}{e_i}\left(t\right) + \left(1-{\delta}\right)y
 where $\delta, 0 \leq \delta 1$, determines the trace decay rate. Note that each synapse has its own local eligibility trace. 
    Eligibility plays a role analogous to the part of the boxes local-demon algorithm, when the demon's box is entered and an action has been chosen, remembers what action was chosen and begins to count. The factor $x_i\left(t\right)$ in $\left(3\right)$ triggers the eligibility trace, a kind of count, or contributes to an ongoing trace, whenever box $i$ is entered ($x_i\left(t\right)=1$).
    Unlike the count initiated by a local demon in the "demon-in-a-box" algorithm, the eligibility trace effectively counts down rather than up (more precisely, its magnitude decays toward zero). Recall that reinforcement $r$ remains zero until a failure occurs, at which time it becomes $-1$. Thus whatever control decision was made when a box was visited will always be made _less_ likely when the failure occurs, but the longer the time interval between the decision and the ocurrence of the failure signal, the less this decrease in probability will be. Since the failure signal always eventually occurs, the action that was taken may deserve some of the blame for the failure. Despite the fact that all actions inevitable lead to failure, one action is _probably_ better than the rest. The learning process defined by $\left(1\right)-\left(3\right)$ needs to be more subtle to ensure convergence to the actions that yeld the least penality in cases in which only pennalization is avaialable. This subtelty is implemented via _ACE_ rather than in _ASE_ as it will be clarified in the section on _ACE_.
-   Among its other functions, the _ACE_ constructs predictions of reinforcement so that if penalty is less than its expected level, it acts as a reward. As implied earlier _ASE_ operates in conjunction witht the _ACE_. 
-
+   
 2. The Adaptive Critic Element (_ACE_)
 
 The Fig. 4 shows an _ASE_ coupled with an _ACE_ for the cartpole task. The _ACE_ receives the externally supplied reinforcement signal which it uses to determine how to compute, on th ebasis of the current cartpole state vector, an improved reinforcement signal (denoted with $\hat{r}$ on the Figure) that it sends to the _ASE_.
+Among its other functions, the _ACE_ constructs predictions of reinforcement so that if penalty is less than its expected level, it acts as a reward. As implied earlier _ASE_ operates in conjunction witht the _ACE_. The _ACE_ stores in each box a prediction or expectation of the reinforcement that can eventually be obtained from the environment by choosing an action for that box. The _ACE_ uses this prediction to determine a reinforcement signal that it delivers to the _ASE_ whenever the box is entered by the cartpole state, thus permitting learning to occur throghout the trials 
 
 <img src="images/ASE_and_ACE_elements.png" width="900">\
 Figure 4: The _ASE_ controller and the _ACE_ element for the cart-pole system. 
 
 _//TODO: finish this section_
 
-#### Advantages of the "Two-control elements" over the "Demon-in-a-box" algorithm
+#### Advantages of the "Two control elements" algorithm over the "Demon-in-a-box" algorithm
   
    Although the boxes system and the cartpole problem serves the purpose of explaining the ASE design in understandable way, the _ASE_ does not represent an attempt to duplicate the "demon-in-a-box" algorithm in neuronlike form. The _ASE_ formulation is less restricted than the "demon-in-a-box" algorithm in several ways. First, the "demon-in-a-box" algorithm is based on the subdivision of the problem space into a finire number of nonoverlapping regions, and no generalization is attempted between regions. It develops a control rule that is effectively specified by means of a lookup table. Although a form of generalization can be applied to the "Demon-in-a-box" algorithm by using an averaging process over neighboring boxes it is not immediately obvious how to extend the algorithm to take advantage of the other forms of generalization that would be possible if the controlled system's states could be represented by arbitrary vectors rather than only by the standard unit basis vectors which are produced by a suitable decoder. The _ASE_ can accept arbitrary input vectors and can be regarded as a step toward extending the type of generalization produced by error-corection supervised learning pattern classification methods to the less restricted reinforcement learning paradigm.
    The "Demon-in-box" algorithm is also restricted in that its design was based on the _a priori_ knowledge that the time until failure was to serve as he evaluation criterion and that the learning process would be divided into distinct trials that would always end with a failure signal. This _a priori_ knowledge was used to reduce the uncertainty in the problem by restricting each local demon to choosing the same action each time its box was entered during any given trial. The _ASE_, on other hand, is capable of working to achieve rewarding events and to avoid penalizing events which might occur at any time. It is not exclusively failure-driven, and its operation is specified without reference to the notion of a trial (_TODO_: _need to elaborate on the latter_).    
