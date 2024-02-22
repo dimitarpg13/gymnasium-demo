@@ -67,7 +67,7 @@ _ASE_'s input is determined from the current cart-pole state vector by decoder t
 
 The other job of the global demon is to distribute a failure signal to all of the local demons - this is implemented via the reinforcement pathway of the _ASE_ element which receives the failure signal and distributes the information to all of its relevant synapses.
 
-In more detail, the _ASE_ is defined as follows. The element has a reinforcement input pathway, $n$ pathways for nonreinforcement input, and a single output pathway (see Figure 3 below). Let $x_{i}\left(t\right), 1 \leq i \leq n$, denote the real-valued signal on the $i$th non-reinforcement input pathway at time $t$, and let $y\left(t\right)$ denote the output at time $t$. Associated with each nonreinforcement input pathway $i$ is a real-valued weight with value at time $t$ denoted by $w_{i}\left(t\right)$.
+In more detail, the _ASE_ is defined as follows. The element has a reinforcement input pathway, $n$ pathways for nonreinforcement input, and a single output pathway (see Figure 3 below). Let $x_{i}\left(t\right), 1 \leq i \leq n$, denote the real-valued signal on the $i$-th non-reinforcement input pathway at time $t$, and let $y\left(t\right)$ denote the output at time $t$. Associated with each nonreinforcement input pathway $i$ is a real-valued weight with value at time $t$ denoted by $w_{i}\left(t\right)$.
 
 The element's output $y\left(t\right)$ is determined from the input vector $X\left(t\right) = \left(x_{1}\left(t\right),...,x_{n}\left(t\right)\right)$ as follows:
 
@@ -118,7 +118,7 @@ The Fig. 4 shows an _ASE_ coupled with an _ACE_ for the cartpole task. The _ACE_
 Among its other functions, the _ACE_ constructs predictions of reinforcement so that if penalty is less than its expected level, it acts as a reward. As implied earlier _ASE_ operates in conjunction witht the _ACE_. The _ACE_ stores in each box a prediction or expectation of the reinforcement that can eventually be obtained from the environment by choosing an action for that box. The _ACE_ uses this prediction to determine a reinforcement signal that it delivers to the _ASE_ whenever the box is entered by the cartpole state, thus permitting learning to occur throghout the trials rather than solely on failure. This greatly decreases the uncertainty faced by the _ASE_. The cnetral idea behind the _ACE_ algorithm is that predictions are formed that predict not just reinforcement but also future predictions of reinforcement (_TODO: elaborate what that means_).
 
 Like the _ASE_, the _ACE_ has a reinforcement input pathway, _n_ pathways for nonreinforcement input, and a single output pathway (Figure 4). 
-Let $r\left(t\right)$ denote the real-valued reinforcement at time $t$. Let $x_i\left(t\right)$, $1 \leq i \leq n$, denote the real-valued signal on the $i$-th nonreinforcement input pathway at time $t$. 
+Let $r\left(t\right)$ denote the real-valued reinforcement at time $t$. Let $x_i\left(t\right)$, $1 \leq i \leq n$, denote the real-valued signal on the $i$-th nonreinforcement input pathway at time $t$. Let $\hat(t)\left(t\right)$ denote the real-valued output signal at time $t$. Each nonreinforcement input pathway $i$ has a weight with real value $v_i\left(
 
 
 <img src="images/ASE_and_ACE_elements.png" width="900">\
