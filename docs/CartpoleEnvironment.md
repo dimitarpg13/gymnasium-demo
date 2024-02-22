@@ -26,7 +26,7 @@ python code: [random_cartpole_games.py](https://github.com/dimitarpg13/gymnasium
 ## Devising an algorithm to control the cartpole in the Cartpole environment
 
 
-### The algorithms in the 1983 Barto and Sutton's article
+### The algorithms "Search-and-critic" and "Demon-in-box" discussed in the 1983 Barto and Sutton's article
 
 The article delineates the presence of two _adaptive_ elements as essential piece of their algorithm: associative search element (_ASE_) and adaptive critic element (_ACE_). The presence of _ACE_ creates a reinforcement learning feedback loop which improves the performance of the algorithm. The _ASE_ must discover what responses lead to improvements in performance. The _ASE_ employs _trial-and-error_, or _generate-and-test_ search process. In the presence of input signals it generates actions by a random process. Based on feedback that evaluates the problem-solving consequences of the actions, the _ASE_ "tunes in" input signals to bias the action-generation process, conditionally on the input, so that it will more likely generate the actions leading to improved performance. The optimal action depends on the value of the input signal which is the state $s$. Actions that lead to performance improvement in the presence of specific input signals are stored in an _association map_ which is a special data structure. This stochastic search process is denoted as _associative search_ by Barto and Sutton.
 
@@ -55,7 +55,7 @@ A _global demon_ inspects the incoming state vector at each time step and alerts
 
 Notice that since the effect of a demon's decision will depend on the decisions made by other demons whose boxes are visited during a trial (a trial is the time period from reset to failure), the environment of a local demon, consisting of the other demons as well as the cart-pole system, does not consistently evaluate the demon's actions.
 
-#### Barto and Sutton's "two control elements" algorithm
+#### Barto and Sutton's "Search-and-critic" algorithm
 
 1. The Adaptive Search ELement (_ASE_)
 
@@ -122,7 +122,7 @@ Figure 4: The _ASE_ controller and the _ACE_ element for the cart-pole system.
 
 _//TODO: finish this section_
 
-#### Advantages of the "Two control elements" algorithm over the "Demon-in-a-box" algorithm
+#### Advantages of the "Search-and-critic" algorithm over the "Demon-in-a-box" algorithm
   
    Although the boxes system and the cartpole problem serves the purpose of explaining the ASE design in understandable way, the _ASE_ does not represent an attempt to duplicate the "demon-in-a-box" algorithm in neuronlike form. The _ASE_ formulation is less restricted than the "demon-in-a-box" algorithm in several ways. First, the "demon-in-a-box" algorithm is based on the subdivision of the problem space into a finire number of nonoverlapping regions, and no generalization is attempted between regions. It develops a control rule that is effectively specified by means of a lookup table. Although a form of generalization can be applied to the "Demon-in-a-box" algorithm by using an averaging process over neighboring boxes it is not immediately obvious how to extend the algorithm to take advantage of the other forms of generalization that would be possible if the controlled system's states could be represented by arbitrary vectors rather than only by the standard unit basis vectors which are produced by a suitable decoder. The _ASE_ can accept arbitrary input vectors and can be regarded as a step toward extending the type of generalization produced by error-corection supervised learning pattern classification methods to the less restricted reinforcement learning paradigm.
    The "Demon-in-box" algorithm is also restricted in that its design was based on the _a priori_ knowledge that the time until failure was to serve as he evaluation criterion and that the learning process would be divided into distinct trials that would always end with a failure signal. This _a priori_ knowledge was used to reduce the uncertainty in the problem by restricting each local demon to choosing the same action each time its box was entered during any given trial. The _ASE_, on other hand, is capable of working to achieve rewarding events and to avoid penalizing events which might occur at any time. It is not exclusively failure-driven, and its operation is specified without reference to the notion of a trial (_TODO_: _need to elaborate on the latter_).    
