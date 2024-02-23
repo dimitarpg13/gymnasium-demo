@@ -118,7 +118,12 @@ The Fig. 4 shows an _ASE_ coupled with an _ACE_ for the cartpole task. The _ACE_
 Among its other functions, the _ACE_ constructs predictions of reinforcement so that if penalty is less than its expected level, it acts as a reward. As implied earlier _ASE_ operates in conjunction witht the _ACE_. The _ACE_ stores in each box a prediction or expectation of the reinforcement that can eventually be obtained from the environment by choosing an action for that box. The _ACE_ uses this prediction to determine a reinforcement signal that it delivers to the _ASE_ whenever the box is entered by the cartpole state, thus permitting learning to occur throghout the trials rather than solely on failure. This greatly decreases the uncertainty faced by the _ASE_. The cnetral idea behind the _ACE_ algorithm is that predictions are formed that predict not just reinforcement but also future predictions of reinforcement (_TODO: elaborate what that means_).
 
 Like the _ASE_, the _ACE_ has a reinforcement input pathway, _n_ pathways for nonreinforcement input, and a single output pathway (Figure 4). 
-Let $r\left(t\right)$ denote the real-valued reinforcement at time $t$. Let $x_i\left(t\right)$, $1 \leq i \leq n$, denote the real-valued signal on the $i$-th nonreinforcement input pathway at time $t$. Let $\hat(t)\left(t\right)$ denote the real-valued output signal at time $t$. Each nonreinforcement input pathway $i$ has a weight with real value $v_i\left(
+Let $r\left(t\right)$ denote the real-valued reinforcement at time $t$. Let $x_i\left(t\right)$, $1 \leq i \leq n$, denote the real-valued signal on the $i$-th nonreinforcement input pathway at time $t$. Let $\hat(t)\left(t\right)$ denote the real-valued output signal at time $t$. Each nonreinforcement input pathway $i$ has a weight with real value $v_i\left(t\right)$ at time $t$. The output $\hat(t)$ is the improved reinforcement signal that is used by the _ASE_ in place of $r$ in (2). 
+In order to produce $\hat(r)$, the _ACE_ must determine a prediction $p\left(t\right)$ of evetual reinforcement that is a fucntion of the input vector $X\left(t\right)$ (which in the boxes paradygm, simply selects a box). We let :
+
+$$p\left(t\right) = sum_{i=1}^{n} v_{i}\left(t\right) \dot x_{i}\left(t\right)    \quad (4)$$
+
+and seek a means of updating the weights $v_i$ so that $p\left(t\right)$ converges to an accurate prediction. 
 
 
 <img src="images/ASE_and_ACE_elements.png" width="900">\
