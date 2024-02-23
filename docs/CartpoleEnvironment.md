@@ -131,7 +131,7 @@ Figure 4: The _ASE_ controller and the _ACE_ element for the cart-pole system.
 
 The updating rule we use is:
 
-$$v_{i}\left(t+1\right) = v_{i}\left(t\right) + \beta\left[r\left(t\right) + \gamma p\left(t\right) - p\left(t-1\right)\right]\bar(x)_{i}\left(t\right)   \quad (5)$$
+$$v_{i}\left(t+1\right) = v_{i}\left(t\right) + \beta\left[r\left(t\right) + \gamma p\left(t\right) - p\left(t-1\right)\right]\bar{x}_{i}\left(t\right)   \quad (5)$$
 
 
 _//TODO: finish this section_
