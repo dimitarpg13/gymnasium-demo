@@ -121,7 +121,7 @@ Like the _ASE_, the _ACE_ has a reinforcement input pathway, _n_ pathways for no
 Let $r\left(t\right)$ denote the real-valued reinforcement at time $t$. Let $x_i\left(t\right)$, $1 \leq i \leq n$, denote the real-valued signal on the $i$-th nonreinforcement input pathway at time $t$. Let $\hat(t)\left(t\right)$ denote the real-valued output signal at time $t$. Each nonreinforcement input pathway $i$ has a weight with real value $v_i\left(t\right)$ at time $t$. The output $\hat(t)$ is the improved reinforcement signal that is used by the _ASE_ in place of $r$ in (2). 
 In order to produce $\hat(r)$, the _ACE_ must determine a prediction $p\left(t\right)$ of evetual reinforcement that is a fucntion of the input vector $X\left(t\right)$ (which in the boxes paradygm, simply selects a box). We let :
 
-$$p\left(t\right) = sum_{i=1}^{n} v_{i}\left(t\right) \dot x_{i}\left(t\right)    \quad (4)$$
+$$p\left(t\right) = \sum_{i=1}^{n} v_{i}\left(t\right) \dot x_{i}\left(t\right)    \quad (4)$$
 
 and seek a means of updating the weights $v_i$ so that $p\left(t\right)$ converges to an accurate prediction. 
 
