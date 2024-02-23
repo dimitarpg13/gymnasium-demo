@@ -129,6 +129,11 @@ and seek a means of updating the weights $v_i$ so that $p\left(t\right)$ converg
 <img src="images/ASE_and_ACE_elements.png" width="900">\
 Figure 4: The _ASE_ controller and the _ACE_ element for the cart-pole system. 
 
+The updating rule we use is:
+
+$$v_{i}\left(t+1\right) = v_{i}\left(t\right) + \beta\left[r\left(t\right) + \gamma p\left(t\right) - p\left(t-1\right)\right]\bar(x)_{i}\left(t\right)   \quad (5)$$
+
+
 _//TODO: finish this section_
 
 #### Advantages of the "Search-and-critic" algorithm over the "Demon-in-a-box" algorithm
