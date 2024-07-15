@@ -2,7 +2,7 @@
 name = "gymnasium-demo"
 version = "0.1.0"
 description = ""
-authors = ["Dimitar Gueorguiev <dimitar_pg13@hotmail.com>"]
+authors = ["Dimitar Gueorguiev"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
