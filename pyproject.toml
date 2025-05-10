@@ -6,9 +6,9 @@ authors = ["Dimitar Gueorguiev <dimitar_pg13@hotmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.12"
-gymnasium = {extras = ["classic-control"], version = "^0.29.1"}
-keras = "^3.0.4"
+python = "^3.12.4"
+gymnasium = {extras = ["classic-control"], version = "^1.1.1"}
+keras = { version = ">=3.1.2" }
 
 
 [build-system]

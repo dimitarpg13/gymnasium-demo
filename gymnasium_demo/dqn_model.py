@@ -26,4 +26,3 @@ def dqn_model(input_shape, action_space):
     model.summary()
 
     return model
-
