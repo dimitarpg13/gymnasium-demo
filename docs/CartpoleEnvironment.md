@@ -133,6 +133,8 @@ The updating rule we use is:
 
 $$v_{i}\left(t+1\right) = v_{i}\left(t\right) + \beta\left[r\left(t\right) + \gamma p\left(t\right) - p\left(t-1\right)\right]\bar{x}_{i}\left(t\right)   \quad (5)$$
 
+where $\beta$ is a positive constant determining the rate of change of $v_i$; $\gamma$, $0 \le \gamma \leq 1$, is 
+
 
 _//TODO: finish this section_
 
